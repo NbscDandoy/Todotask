@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task - Task Doy</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        /* Specific styling for the edit box */
+        .edit-container {
+            max-width: 500px;
+            margin: 100px auto;
+            padding: 30px;
+            border: 1px solid #eee;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            animation: fadeInUp 0.5s ease-out;
+        }
+        .edit-input {
+            width: 100%;
+            padding: 12px;
+            margin: 20px 0;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1.1rem;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-save {
+            background: #000;
+            color: #fff;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .btn-cancel {
+            text-decoration: none;
+            color: #666;
+            padding: 10px;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="edit-container">
+            <h2 style="font-weight: 800; margin-top: 0;">Update Task</h2>
+            <p style="color: #666;">Change the name of your task below:</p>
+            
+            <form action="/edit/{{ todo.id }}" method="POST">
+                <input type="text" name="title" class="edit-input" value="{{ todo.title }}" required autofocus>
+                
+                <div class="button-group">
+                    <button type="submit" class="btn-save">Save Changes</button>
+                    <a href="/" class="btn-cancel">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

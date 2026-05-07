@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task Doy</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header-banner">
+        <div class="container nav-flex">
+            <h3 class="logo">Task Doy</h3>
+        </div>
+    </div>
+
+    <div class="container">
+        <h1 class="main-title">TODO List</h1>
+        <div class="promo-bar">Do it now.</div>
+        
+        <form action="/add" method="POST" class="add-form">
+            <input type="text" name="title" placeholder="Add New Task" required>
+            <button type="submit" class="btn-add-main">Add Task</button>
+        </form>
+
+        <table class="todo-table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Task Name</th>
+                    <th>Done</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for todo in todo_list %}
+                    <td>{{ loop.index }}</td>
+                    <td class="{{ 'done-text' if todo.complete else '' }}">{{ todo.title }}</td>
+                    <td>
+                        <a href="/update/{{ todo.id }}" class="status-badge {{ 'is-complete' if todo.complete else '' }}">
+                            <i class="bi {{ 'bi-check-circle-fill' if todo.complete else 'bi-circle' }}"></i> Done
+                        </a>
+                    </td>
+                    <td><a href="/edit/{{ todo.id }}" class="action-btn edit-link"><i class="bi bi-pencil-fill"></i></a></td>
+                    <td><a href="/delete/{{ todo.id }}" class="action-btn delete-link"><i class="bi bi-trash-fill"></i></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+/* --- Animations --- */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    background-color: #fff;
+    color: #333;
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.header-banner { padding: 20px 0; border-bottom: 1px solid #eee; }
+.nav-flex { display: flex; justify-content: space-between; align-items: center; }
+.logo { margin: 0; font-weight: 800; }
+
+.main-title { font-size: 3rem; font-weight: 800; margin: 40px 0 20px 0; }
+
+.promo-bar {
+    background-color: #fff9c4;
+    padding: 12px;
+    border-radius: 4px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.add-form { display: flex; gap: 10px; margin-bottom: 40px; }
+.add-form input {
+    padding: 10px; width: 300px; border: 1px solid #ced4da; border-radius: 6px;
+}
+
+.btn-add-main {
+    background: white; border: 1px solid #000; padding: 10px 20px;
+    font-weight: bold; border-radius: 6px; cursor: pointer;
+}
+
+.todo-table { width: 100%; border-collapse: collapse; }
+.todo-table th { text-align: left; padding: 15px; border-bottom: 2px solid #000; }
+.todo-table td { padding: 15px; border-bottom: 1px solid #eee; }
+
+.todo-row { opacity: 0; animation: fadeInUp 0.5s ease-out forwards; }
+
+.done-text { text-decoration: line-through; color: #adb5bd; }
+
+.status-badge {
+    text-decoration: none; padding: 5px 10px; border-radius: 4px;
+    background: #f1f3f5; color: #adb5bd; font-weight: bold; font-size: 0.8rem;
+}
+.status-badge.is-complete { background: #f3ebff; color: #7b2cbf; }
+
+.action-btn { font-size: 1.1rem; text-decoration: none; transition: 0.2s; }
+.action-btn:hover { transform: scale(1.2); display: inline-block; }
+.edit-link { color: #007bff; }
+.delete-link { color: #d90429; opacity: 0.6; }

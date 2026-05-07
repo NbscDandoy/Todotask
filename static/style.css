@@ -203,3 +203,41 @@ body {
 .undo-btn:hover {
     background: #364fc7;
 }
+/* --- Footer Styles --- */
+.main-footer {
+    margin-top: 80px; /* Pushes footer away from the table */
+    padding: 40px 0;
+    border-top: 1px solid #eee;
+    background-color: #fafafa;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-links a {
+    color: #333;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #4c6ef5;
+}
+
+/* Responsive Footer for Mobile */
+@media (max-width: 600px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}

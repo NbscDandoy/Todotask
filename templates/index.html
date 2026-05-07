@@ -8,6 +8,13 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    {% if request.args.get('undone') %}
+    <div class="undo-toast">
+        <span>Task removed.</span>
+        <button onclick="window.history.back()" class="undo-btn">UNDO</button>
+    </div>
+    {% endif %}
+
     <div class="header-banner">
         <div class="container nav-flex">
             <div class="logo-group">

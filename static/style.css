@@ -33,15 +33,15 @@ body {
     align-items: center; 
 }
 
-/* New Logo Styles */
+/* Logo Styles */
 .logo-group {
     display: flex;
     align-items: center;
-    gap: 12px; /* Space between logo and text */
+    gap: 12px;
 }
 
 .nav-logo {
-    height: 40px; /* Adjust this based on your logo shape */
+    height: 40px;
     width: auto;
     object-fit: contain;
 }
@@ -79,7 +79,7 @@ body {
 }
 
 .add-form input {
-    flex: 1; /* Makes input grow to fill space */
+    flex: 1;
     max-width: 400px;
     padding: 12px 15px; 
     border: 2px solid #eee; 
@@ -129,7 +129,6 @@ body {
     vertical-align: middle;
 }
 
-/* Animation trigger for rows */
 .todo-table tbody tr { 
     animation: fadeInUp 0.5s ease-out forwards; 
 }
@@ -152,7 +151,6 @@ body {
     display: inline-flex;
     align-items: center;
     gap: 5px;
-    transition: 0.2s;
 }
 
 .status-badge.is-complete { 
@@ -168,17 +166,40 @@ body {
     display: inline-block;
 }
 
-.action-btn:hover { 
-    transform: scale(1.2); 
-}
-
+.action-btn:hover { transform: scale(1.2); }
 .edit-link { color: #4c6ef5; }
+.delete-link { color: #fa5252; opacity: 0.7; }
 
-.delete-link { 
-    color: #fa5252; 
-    opacity: 0.7; 
+/* --- NEW: Undo Toast Notification --- */
+.undo-toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a1a;
+    color: #fff;
+    padding: 14px 28px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    z-index: 2000;
+    animation: fadeInUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.delete-link:hover {
-    opacity: 1;
+.undo-btn {
+    background: #4c6ef5;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+.undo-btn:hover {
+    background: #364fc7;
 }

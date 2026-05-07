@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 # Note: Ensure flask_sqlalchemy is installed with: pip install flask-sqlalchemy
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'your-very-secret-key'
 # The database file will be created in the 'instance' folder automatically
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///todos.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # Good practice to keep logs clean

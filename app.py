@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 
 # --- DEPLOYMENT UPDATES ---
+# Secret key is mandatory to securely sign cookies for Flask session caching
 app.config['SECRET_KEY'] = 'dev-key-taskdoy-123'
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -58,7 +59,7 @@ def edit(id):
 def delete(id):
     todo = db.session.get(Todo, id)
     if todo:
-        # Save the task title in a session so we can restore it if "Undo" is clicked
+        # Save the task title in a session container so we can restore it if "Undo" is clicked
         session['last_deleted_title'] = todo.title
         db.session.delete(todo)
         db.session.commit()
@@ -67,16 +68,16 @@ def delete(id):
 # --- NEW UNDO ROUTE ---
 @app.route('/undo')
 def undo():
-    # Retrieve the title from the session
+    # Retrieve and simultaneously drop the title from the cookie context
     title = session.pop('last_deleted_title', None)
     if title:
-        # Re-add the task to the database
+        # Re-add the task back to the SQLite layer
         new_todo = Todo(title=title, complete=False)
         db.session.add(new_todo)
         db.session.commit()
     return redirect(url_for('index'))
 
-# Ensure tables are created
+# Ensure database structures and tracking instance folders are generated setup
 with app.app_context():
     if not os.path.exists(os.path.join(basedir, 'instance')):
         os.makedirs(os.path.join(basedir, 'instance'))

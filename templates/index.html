@@ -11,7 +11,7 @@
     {% if request.args.get('undone') %}
     <div class="undo-toast">
         <span>Task removed.</span>
-        <button onclick="window.history.back()" class="undo-btn">UNDO</button>
+        <a href="{{ url_for('undo') }}" class="undo-btn" style="text-decoration: none; display: inline-block;">UNDO</a>
     </div>
     {% endif %}
 
@@ -68,13 +68,14 @@
             </tbody>
         </table>
     </div>
+
     <footer class="main-footer">
-    <div class="container footer-content">
-        <p>&copy; 2026 Task Doy. Created by <strong>Dandie Laquinta</strong></p>
-        <div class="footer-links">
-            <a href="https://github.com/NbscDandoy/Todotask" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+        <div class="container footer-content">
+            <p>&copy; 2026 Task Doy. Created by <strong>Dandie Laquinta</strong></p>
+            <div class="footer-links">
+                <a href="https://github.com/NbscDandoy/Todotask" target="_blank"><i class="bi bi-github"></i> GitHub</a>
+            </div>
         </div>
-    </div>
-</footer>
+    </footer>
 </body>  
 </html>
